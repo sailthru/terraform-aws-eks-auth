@@ -16,7 +16,7 @@ data "aws_iam_role" "kubernetes_auth_role" {
 }
 
 module "eks_auth" {
-  source = "sailthru/terraform-eks-auth/aws"
+  source = "sailthru/eks-auth/aws"
   aws_profile = "default"
   cluster_id = "${data.aws_eks_cluster.this.id}"
   kubeconfig_aws_authenticator_additional_args = ["-r", "${data.aws_iam_role.kubernetes_auth_role.arn}"]
